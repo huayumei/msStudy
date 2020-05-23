@@ -1,0 +1,120 @@
+/* pages/user/user.wxss */
+.user{
+  padding: 20rpx 40rpx;
+}
+.userInfo{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.userInfoL{
+  display: flex;
+  align-items: center;
+}
+.userInfoR{
+  flex: 1;
+}
+.user image{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  background: #edd;
+}
+.user_name{
+  flex: 1;
+  margin-left: 20px;
+}
+.list{
+  width: 100vw;
+  overflow-y: scroll;
+}
+.listItem{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40rpx;
+  width: calc(100vw - 80rpx);
+  height: 160rpx;
+  background: #fff;
+  margin-top: 20rpx;
+}
+.listL{
+  flex: 1;
+  display: flex;
+  flex-direction:column;
+  justify-content: space-between;
+  height: 100%;
+}
+.className{
+  font-size: 30rpx;
+}
+.classMoney{
+  font-size: 24rpx;
+}
+.listR{
+  width: 40%;
+  height: 100%;
+}
+.listR image{
+  width: 100%;
+  height: 100%;
+}
+.loginBtn{
+  background: #44bec4;
+  color: #fff;
+  padding: 0;
+  width: 200rpx !important;
+  height: 60rpx !important;
+  line-height: 60rpx !important;
+  border-radius: 60rpx;
+  min-height: auto !important;
+  font-weight: normal;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+.mask{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5)
+}
+.bindContent{
+  width: 80%;
+  position: absolute;
+  top: 30vh;
+  left: 10%;
+  background: #fff;
+  text-align: center;
+  border-radius: 20rpx;
+  padding: 40rpx 0 0;
+}
+.currentBtn{
+  width: 120rpx;
+  border-radius: 10rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  background: #3badeb;
+  color: #fff;
+  margin: 40rpx auto;
+}
+.input_item{
+  display: flex;
+  align-items: center;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  border-bottom: 1px solid #ddd;
+}
+.input_item label{
+  width: 25%;
+  text-align: right;
+}
+.input_item input{
+  flex: 1;
+  height: 100%;
+  text-align: left;
+}

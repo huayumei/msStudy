@@ -1,0 +1,38 @@
+/* pages/class/class.wxss */
+.list{
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  font-size: 30rpx;
+}
+.listItem{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40rpx;
+  width: calc(100vw - 80rpx);
+  height: 160rpx;
+  background: #fff;
+  margin-top: 20rpx;
+}
+.listL{
+  flex: 1;
+  display: flex;
+  flex-direction:column;
+  justify-content: space-between;
+  height: 100%;
+}
+.listR{
+  width: 40%;
+  height: 100%;
+}
+.listR image{
+  width: 100%;
+  height: 100%;
+  background: #edd;
+}
+.loading{
+  font-size: 26rpx;
+  text-align: center;
+  padding: 20rpx 0;
+}

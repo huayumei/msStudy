@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/class/class",
+    "pages/detail/detail",
+    "pages/logs/logs",
+    "pages/user/user",
+    "pages/class/detail/detail",
+    "pages/user/clock/clock",
+    "pages/detail/detailEnd/detailEnd"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3badeb",
+    "navigationBarTitleText": "米司小学霸",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#333333",
+    "selectedColor": "#3badeb",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "assets/img/listOn.png",
+        "iconPath": "assets/img/list.png",
+        "pagePath": "pages/class/class",
+        "text": "课程"
+      },
+      {
+        "selectedIconPath": "assets/img/userOn.png",
+        "iconPath": "assets/img/user.png",
+        "pagePath": "pages/user/user",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

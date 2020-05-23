@@ -1,0 +1,22 @@
+<!--pages/detail/detail.wxml-->
+<view class="ans">
+  <view class="ans_num">
+    {{classNum+1}}/{{classDetail.questionItems.length}}
+  </view>
+  <view class="ans_menu">{{classNum+1}}.<rich-text nodes="{{classDetail.questionItems[classNum].title}}"></rich-text></view>
+  <view class="ans_item">
+    <radio-group class="radio-group" bindchange="radioChange">
+        <label class="radio" wx:for="{{classDetail.questionItems[classNum].items}}">
+          <radio value="{{item.prefix}}" checked="{{item.checked}}"/>
+          {{item.prefix}}.<rich-text nodes="{{item.content}}"></rich-text>
+        </label>
+    </radio-group>
+  </view>
+  <view class="nextBtn" bindtap="next">下一题</view>
+  <view class="mask" wx:if="{{videoState}}">
+    <view class="ans_video">
+      <video :autoplay="true" src="{{classDetail.questionItems[classNum].analyze}}"></video>
+      <view class="videoNextBtn" bindtap="current">确定</view>
+    </view>
+  </view>
+</view>

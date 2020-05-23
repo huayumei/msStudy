@@ -1,0 +1,25 @@
+/* pages/index/index.wxss */
+.userInfo{
+  margin: 60rpx auto 0;
+  text-align: center;
+  width: 180rpx;
+}
+.mask{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5)
+}
+.dialog{
+  width: 80%;
+  position: absolute;
+  top: 20vh;
+  left: 10%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  height: 300rpx;
+  border-radius: 20rpx;
+}

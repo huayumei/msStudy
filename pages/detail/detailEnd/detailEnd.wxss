@@ -1,0 +1,38 @@
+/* pages/detail/detailEnd/detailEnd.wxss */
+.anEnd{
+  padding: 20rpx 40rpx;
+}
+.end_title{
+  margin-bottom: 40rpx;
+  font-size: 28rpx;
+}
+.ans_item{
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  justify-content: space-between;
+  margin-bottom: 40rpx;
+}
+.an_menu{
+  width: 60%;
+}
+.an_error{
+  color: #fe5504;
+}
+.an_success{
+  color: #07c160;
+}
+rich-text{
+  display: inline-block;
+}
+.nextBtn{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #3badeb;
+  color: #fff;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}

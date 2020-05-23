@@ -1,0 +1,36 @@
+/* pages/user/clock/clock.wxss */
+.error_calendar{
+  background: rgba(87,107,149,0.8);
+  color: #fff;
+}
+.success_calendar{
+  background: rgba(9,187,7,0.8);
+   color: #fff;
+}
+.success_calendar1{
+  background: rgba(230,67,64,0.8);
+   color: #fff;
+}
+.clock{
+  background: rgba(53, 173, 235, 0.5);
+  margin: 5rpx 10rpx;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 60rpx;
+  border-radius: 14rpx
+}
+.clock_num{
+  background: #fff;
+  border-radius: 100%;
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: red;
+  display: inline-block;
+  font-size: 50rpx;
+  font-weight: bold;
+}
+.clock_btn{
+  width: 50%;
+  margin: 40rpx auto;
+}

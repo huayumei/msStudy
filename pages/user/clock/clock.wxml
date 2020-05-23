@@ -1,0 +1,6 @@
+<!--pages/user/clock/clock.wxml-->
+<calendar calendarConfig="{{calendarConfig}}" bind:afterCalendarRender="afterCalendarRender" bind:onTapDay="onTapDay"></calendar>
+<view class="clock">
+  <text class="clock_title">截至目前，你已坚持打卡\n<text class="clock_num">{{clockTotal}}</text>天\n请再接再厉，继续努力</text> 
+</view>
+<view class="clock_btn btn_base" bindtap="clockStart" wx:if="{{clockToDay}}">开始今天打卡</view>

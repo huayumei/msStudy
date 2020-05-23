@@ -1,0 +1,18 @@
+<!--pages/class/detail/detail.wxml-->
+<view class="container">
+  <view class="class_img">
+    <rich-text nodes="{{classDetail.courseImg}}"></rich-text>
+    <!-- <image src="{{classDetail.courseImg}}"></image> -->
+  </view>
+  <view class="detail">
+    <view class="class_title">{{classDetail.courseDesc}}</view>
+    <view class="class_money color_base"><text class="small">￥</text>{{classDetail.suggestTime}}</view>
+    <view class="btn_base pay_btn" bindtap="payClass">点击购买</view>
+  </view>
+  <view class="mask" wx:if="{{userState}}">
+    <view class="bindContent">
+      <image src="https://www.343fblood.cn/static/img/qrImg.jpg"></image>
+      <view class="currentBtn" bindtap="current">确定</view>
+    </view>
+  </view>
+</view>

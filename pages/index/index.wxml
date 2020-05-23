@@ -1,0 +1,12 @@
+<!--pages/index/index.wxml-->
+<view class="userInfo">
+  <open-data type="userAvatarUrl" class="userImg"></open-data>
+  <open-data type="userNickName" class="userName"></open-data>
+</view>
+<button open-type="getUserInfo" style="margin-top:100rpx;" type="primary" plain="true" bindgetuserinfo="getuserinfo">授权登录</button>
+<view class="mask" wx:if="{{phoneState}}">
+  <view class="dialog">
+    <button open-type="getPhoneNumber"  type="primary" plain="true" bindgetphonenumber="getPhoneNumber">绑定手机号</button>
+
+  </view>
+</view>

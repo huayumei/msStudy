@@ -1,0 +1,20 @@
+/**app.wxss**/
+.container {
+  height: 100vh;
+  background: #f8f8f8;
+} 
+.btn_base{
+  display: block;
+  width: 80%;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 30rpx;
+  text-align: center;
+  border-radius: 50rpx;
+  background: #fe5504;
+  color: #fff;
+  padding: 15rpx 0;
+}
+.color_base{
+  color: #fe5504;
+}
