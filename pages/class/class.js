@@ -35,6 +35,9 @@ Page({
           }else{
             listArr = listArr.concat(th.data.listArr, res.response.list)
           }
+          listArr.forEach(function(item){
+            item.courseImage = item.courseImage.replace(/\<img/gi, '<img style="width:100%;height:100%" ')
+          })
           th.setData({
             listArr: listArr
           })

@@ -24,9 +24,11 @@
 }
 .listR{
   width: 40%;
-  height: 100%;
+  height: 160rpx;
+  overflow: hidden;
 }
-.listR image{
+.listR rich-text{
+  display: block;
   width: 100%;
   height: 100%;
   background: #edd;

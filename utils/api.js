@@ -25,14 +25,18 @@ const request = (url, method, data) => {
       success(request) {
         if (request.data.code == 400){
           let openId = wx.getStorageSync('openId')
-          request('/api/wx/student/auth/bind', 'POST', {
-            userName: openId,
-            password: openId
-          }).then(res => {
-            wx.setStorageSync('token', res.response)
-            wx.setStorageSync('openId', openId)
-          }).catch(res => {
-
+          wx.request({
+            url: API_BASE_URL+'/api/wx/student/auth/bind',
+            method:'POST',
+            data: {
+              userName: openId,
+              password: openId
+            },
+            header: header,
+            success(request){
+              wx.setStorageSync('token', res.response)
+              wx.setStorageSync('openId', openId)
+            }
           })
         }
         resolve(request.data)
@@ -90,5 +94,6 @@ module.exports = {
   answerPageList: (data) => request('/api/wx/student/exampaper/answer/pageList', 'POST', data),
   //答题详情
   readSelect: (data) => request('/api/wx/student/exampaper/answer/read/' + data.id, 'POST'),
-  
+  //手机号解码
+  deciphering: (data) => request('/api/wx/student/exampaper/deciphering', 'POST', data),
 }

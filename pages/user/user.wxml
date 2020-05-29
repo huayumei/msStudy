@@ -6,20 +6,19 @@
         <image class="user_img" src="{{user.avatarUrl}}"></image>
         <view class="user_name">{{user.nickName}}</view>
       </view>
-      <view class="userInfoR">
+      <!-- <view class="userInfoR">
         <button bindtap="bindClass" class="loginBtn">绑定课程</button>
-      </view>
+      </view> -->
     </view>
   </view>
   <view class="list">
     <view class="listItem" bindtap="detail" data-detail="{{item}}" wx:for="{{listArr}}">
       <view class="listL">
         <view class="className">{{item.name}}</view>
-        <view class="classMoney">连续打卡天数：{{item.cardNum}}天</view>
+        <view class="classMoney">连续打卡天数：{{item.signCount}}天</view>
       </view>
       <view class="listR">
-        <rich-text nodes="{{item.courseImag}}"></rich-text>
-        <!-- <image src="{{item.courseImage}}"></image> -->
+        <rich-text nodes="{{item.courseImage}}"></rich-text>
       </view>
     </view>
   </view>

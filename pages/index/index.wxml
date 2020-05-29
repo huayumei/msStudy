@@ -7,6 +7,5 @@
 <view class="mask" wx:if="{{phoneState}}">
   <view class="dialog">
     <button open-type="getPhoneNumber"  type="primary" plain="true" bindgetphonenumber="getPhoneNumber">绑定手机号</button>
-
   </view>
 </view>

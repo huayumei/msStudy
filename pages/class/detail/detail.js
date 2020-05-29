@@ -23,6 +23,7 @@ Page({
   select(){
     api.select({ id: this.data.classId }).then(res => {
       if(res.code == 1){
+        res.response.courseImage = res.response.courseImage.replace(/\<img/gi, '<img style="width:100%;height:100%" ')
         this.setData({
           classDetail:res.response
         })

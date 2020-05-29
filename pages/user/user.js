@@ -26,12 +26,12 @@ Page({
       this.setData({
         user: user
       })
+      this.pageList()
     } else {
       wx.navigateTo({
         url: '../index/index',
       })
     }
-    this.pageList()
   },
   bindClass(){
     this.setData({
@@ -46,16 +46,25 @@ Page({
       isBuy: 1,     //代表查询课程列表   1代表查询已购买的课程列表
     }
     api.pageList(data).then(res => {
+      let listArr = res.response.list
+      listArr.forEach(function (item) {
+        item.courseImage = item.courseImage.replace(/\<img/gi, '<img style="width:100%;height:100%" ')
+      })
       this.setData({
-        listArr: res.response.list
+        listArr: listArr
       })
     }).catch(res => {
 
     })
   },
   detail(e){
+    let data = {
+      id: e.currentTarget.dataset.detail.id,
+      createTime: e.currentTarget.dataset.detail.createTime,
+      nowTime: e.currentTarget.dataset.detail.nowTime,
+    }
     wx.navigateTo({
-      url: 'clock/clock?detail=' + JSON.stringify(e.currentTarget.dataset.detail)
+      url: 'clock/clock?detail=' + JSON.stringify(data)
     })
   },
   bindInput(e){

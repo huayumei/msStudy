@@ -20,12 +20,12 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      classDetail: JSON.parse(options.detail),
       classId: options.classId,
       doTime: options.doTime,
       status:options.status,
       currentTime: options.currentTime,
     })
+    this.select()
   },
   radioChange(e){
     let answerArrT = this.data.answerArrT
@@ -44,7 +44,8 @@ Page({
         id: this.data.classId,
         doTime:this.data.doTime,
         status:this.data.status,
-        cardTime:this.data.currentTime+' 00:00:00'
+        cardTime:this.data.currentTime+' 00:00:00',
+        dayOrder: this.data.doTime
       }
       let an = this.data.answerArrT
       an.forEach(function(item,index){
@@ -83,6 +84,21 @@ Page({
     }
     this.setData({
       videoState:true
+    })
+  },
+  select() {
+    api.select({ id: this.data.classId }).then(res => {
+      if (res.code == 1) {
+        this.setData({
+          classDetail: res.response.titleItems[this.data.doTime]
+        })
+      } else {
+        wx.showToast({
+          title: res.message,
+        })
+      }
+    }).catch(res => {
+
     })
   }
 })

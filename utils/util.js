@@ -28,12 +28,15 @@ const dataNum = (start,end) =>{
   return day
 }
 
-const getTimes = (time, day) => {
+const getTimes = (time,nowTime, day) => {
   let timeArr = []
   for (var i = 0; i < day;i++){
     let startTime = new Date(time.split(' ')[0].replace(/-/g, "/"))
-    let day = startTime.getTime() + i * (1000 * 60 * 60 * 24)
-    timeArr.push(formatTime1(new Date(day)))
+    let nowTime = new Date(time.split(' ')[0].replace(/-/g, "/"))
+    if (startTime < nowTime){
+      let day = startTime.getTime() + i * (1000 * 60 * 60 * 24)
+      timeArr.push(formatTime1(new Date(day)))
+    }
   }
   return timeArr
 }
