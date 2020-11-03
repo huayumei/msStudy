@@ -10,7 +10,7 @@
   </view>
   <view class="mask" wx:if="{{userState}}">
     <view class="bindContent">
-      <image src="https://www.343fblood.cn/static/img/qrImg.jpg"></image>
+      <image src="https://www.webestedu.com/static/img/qrImg.jpg"></image>
       <view class="currentBtn" bindtap="current">确定</view>
     </view>
   </view>
