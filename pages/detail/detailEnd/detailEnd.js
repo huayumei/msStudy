@@ -35,7 +35,7 @@ Page({
       if(res.code == 1){
         this.setData({
           answer: res.response.answer.answerItems,
-          menu: res.response.paper.titleItems[this.data.doTime].questionItems,
+          menu: res.response.paper.titleItems[0].questionItems,
         })
         console.log(this.data.answer)
         console.log(this.data.menu)
