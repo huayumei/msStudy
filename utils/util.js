@@ -13,7 +13,6 @@ const formatTime1 = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
   const day = date.getDate()
-
   return [year, month, day].map(formatNumber).join('-')
 }
 
@@ -28,11 +27,11 @@ const dataNum = (start,end) =>{
   return day
 }
 
-const getTimes = (time,nowTime, day) => {
+const getTimes = (time, time1, day) => {
   let timeArr = []
   for (var i = 0; i < day;i++){
     let startTime = new Date(time.split(' ')[0].replace(/-/g, "/"))
-    let nowTime = new Date(time.split(' ')[0].replace(/-/g, "/"))
+    let nowTime = new Date(time1.split(' ')[0].replace(/-/g, "/"))
     if (startTime < nowTime){
       let day = startTime.getTime() + i * (1000 * 60 * 60 * 24)
       timeArr.push(formatTime1(new Date(day)))

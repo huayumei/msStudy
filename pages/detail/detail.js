@@ -49,14 +49,12 @@ Page({
       }
       let an = this.data.answerArrT
       an.forEach(function(item,index){
-        console.log(th.data.classDetail.questionItems)
-        console.log(th.data.classDetail.questionItems[index])
         let key = index+1 + '_' + th.data.classDetail.questionItems[index].id + '_1'
         data[key] = item
       })
       api.answerSubmit(data).then(res =>{
         if(res.code == 1){
-          wx.navigateTo({
+          wx.redirectTo({
             url: 'detailEnd/detailEnd?answerId=' + JSON.stringify(res.response) + '&doTime=' + this.data.doTime,
           })
         }else{

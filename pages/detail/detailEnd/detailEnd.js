@@ -31,7 +31,7 @@ Page({
   },
   readSelect(){
     let th = this
-    api.readSelect({ id: this.data.answerId}).then(res=>{
+    api.readSelect({ id: this.data.answerId + "_" + this.data.doTime}).then(res=>{
       if(res.code == 1){
         this.setData({
           answer: res.response.answer.answerItems,

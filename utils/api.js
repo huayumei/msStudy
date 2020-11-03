@@ -1,6 +1,6 @@
 
 // 小程序开发api接口统一配置
-const API_BASE_URL = 'https://www.343fblood.cn/ecm'  // 域名
+const API_BASE_URL = 'https://www.webestedu.com/ecm'  // 域名
 const app = getApp()
 const request = (url, method, data) => {
   let _url = API_BASE_URL + url
@@ -23,7 +23,7 @@ const request = (url, method, data) => {
       data: data,
       header: header,
       success(request) {
-        if (request.data.code == 400){
+        if (request.data.code == 400 || request.data.code == 401){
           let openId = wx.getStorageSync('openId')
           wx.request({
             url: API_BASE_URL+'/api/wx/student/auth/bind',
@@ -33,7 +33,7 @@ const request = (url, method, data) => {
               password: openId
             },
             header: header,
-            success(request){
+            success(res){
               wx.setStorageSync('token', res.response)
               wx.setStorageSync('openId', openId)
             }

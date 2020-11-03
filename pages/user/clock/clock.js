@@ -42,9 +42,6 @@ const conf = {
     }
     let status = 0
     let currentDay = ''
-    console.log(currentTime)
-    console.log(this.data.clockArrOn)
-    console.log(this.data.clockArrOver)
     if (this.data.clockArrOn.indexOf(currentTime) != -1 || this.data.clockArrOver.indexOf(currentTime) != -1){
       this.data.clockArr.forEach(function(item,key){
         if(item.createTime.split(' ')[0] == currentTime){
@@ -55,7 +52,7 @@ const conf = {
         url: '../../detail/detailEnd/detailEnd?answerId=' + this.data.clockArr[currentDay].id + '&doTime=' + day,
       })
     }else{
-      if(this.data.clockArrNo.indexOf(currentTime)){
+      if(this.data.clockArrNo.indexOf(currentTime) != -1){
         status = 1
       }
       wx.navigateTo({
@@ -66,9 +63,6 @@ const conf = {
   clockStart(){
     let status = 0
     let currentTime = this.data.classDetail.nowTime
-    // if (this.data.clockArrNo.indexOf(currentTime.split(' ')[0])) {
-    //   status = 1
-    // }
     let day = util.dataNum(this.data.classDetail.createTime, this.data.classDetail.nowTime)
     wx.navigateTo({
       url: '../../detail/detail?classId=' + this.data.classDetail.id + '&doTime=' + day + '&status=' + status + '&currentTime=' + currentTime.split(' ')[0],
@@ -76,7 +70,6 @@ const conf = {
   },
   afterCalendarRender(e) {
     this.select()
-    this.answerPageList()
   },
   onLoad(options){
     let detail = options.detail
@@ -118,9 +111,6 @@ const conf = {
       this.clockSet(this.data.toSetOn, cArrOn,'success_calendar')
       this.clockSet(this.data.toSetNo, cArrNo,'success_calendar1')
       this.clockSet(this.data.toSetOver, cArrOver,'error_calendar')
-      this.calendar.setDateStyle(this.data.toSetNo);
-      this.calendar.setDateStyle(this.data.toSetOn);
-      this.calendar.setDateStyle(this.data.toSetOver);
     }).catch(res =>{
 
     })
@@ -134,6 +124,7 @@ const conf = {
         'class':clsa
       })
     })
+    this.calendar.setDateStyle(newArr);
   },
   delitem(arr,text){
     for(let i = 0; i < arr.length; i++) {
@@ -147,15 +138,16 @@ const conf = {
     api.select({id: this.data.classDetail.id}).then(res => {
       if(res.code == 1){
         this.setData({
-          classArr:res.response.titleItems
+          classArr: res.response.titleItems
         })
         let day = util.dataNum(this.data.classDetail.createTime, this.data.classDetail.nowTime)
-        if(day > this.data.classArr.length){
+        if (day > res.response.titleItems.length-1){
           this.setData({
             clockToDay:false
           })
         }
         this.data.clockArrNo = util.getTimes(this.data.classDetail.createTime, this.data.classDetail.nowTime, this.data.classArr.length)
+        this.answerPageList()
       }else{
         wx.showToast({
           title: res.message,

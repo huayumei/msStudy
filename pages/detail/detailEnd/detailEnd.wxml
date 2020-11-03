@@ -1,8 +1,8 @@
 <!--pages/detail/detailEnd/detailEnd.wxml-->
 <view class="anEnd">
-  <view class="end_title">今日答题打卡结束，共计{{menu.questionItems.length}}题，答对{{answerSuccess}}题</view>
+  <view class="end_title">今日答题打卡结束，共计{{menu.length}}题，答对{{answerSuccess}}题</view>
   <view class="an_list">
-    <view class="ans_item" wx:for="{{menu.questionItems}}">
+    <view class="ans_item" wx:for="{{menu}}">
       <view class="an_menu">{{index+1}}.<rich-text nodes="{{item.title}}"></rich-text></view>
       <view class="an_error" wx:if="{{answerStateArr[index] == 'false'}}">回答错误</view>
       <view class="an_success" wx:else>回答正确</view>

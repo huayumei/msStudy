@@ -21,21 +21,23 @@ Page({
 
   },
   onShow(){
-    let user = wx.getStorageSync('userInfo')
-    if (user) {
-      this.setData({
-        user: user
-      })
-      this.pageList()
-    } else {
-      wx.navigateTo({
-        url: '../index/index',
-      })
-    }
-  },
-  bindClass(){
-    this.setData({
-      bindState:true
+    let th = this
+    wx.getStorage({
+      key: 'userInfo',
+      success: function(res) {
+        console.log(res.data)
+        if (res.data) {
+          th.setData({
+            user: res.data
+          })
+          th.pageList()
+          console.log(11)
+        } else {
+          wx.navigateTo({
+            url: '../index/index',
+          })
+        }
+      },
     })
   },
   pageList() {
@@ -65,56 +67,6 @@ Page({
     }
     wx.navigateTo({
       url: 'clock/clock?detail=' + JSON.stringify(data)
-    })
-  },
-  bindInput(e){
-    let key = e.currentTarget.dataset.value
-    this.setData({
-      [key]:e.detail.value
-    })
-  },
-  current(){
-    if(!this.data.tel){
-      wx.showToast({
-        title: '请输入手机号',
-        icon:'none'
-      })
-      return
-    }
-    if (!this.data.password) {
-      wx.showToast({
-        title: '请输入密码',
-        icon: 'none'
-      })
-      return
-    }
-    this.setData({
-      bindState:false
-    })
-    let data = {
-      tel:this.data.tel,
-      password:this.data.password
-    }
-    this.register()
-  },
-  register(){
-    let openId = wx.getStorageSync('openId')
-    let data = {
-      phone: this.data.user.phone,
-      userName: openId,
-      password: openId,
-      sex: this.data.user.gender,
-      imagePath: this.data.user.avatarUrl,
-      realName: this.data.user.nickName,
-      userLevel: 1,
-      wxOpenId: openId
-    }
-    api.register(data).then(res => {
-      if (res.code == 2 || res.code == 1) {
-        this.pageList()
-      }
-    }).catch(res => {
-
     })
   }
 })

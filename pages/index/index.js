@@ -17,11 +17,21 @@ Page({
    */
   onLoad: function (options) {
     let token = wx.getStorageSync('token')
-    console.log(token)
+    let phone = wx.getStorageSync('phone')
     if(token){
       wx.switchTab({
         url: '../class/class',
       })
+      return
+    }
+    let userInfo = wx.getStorageSync('userInfo')
+    let openId = wx.getStorageSync('openId')
+    this.setData({
+      userInfo: userInfo,
+      openId: openId
+    })
+    if(phone){
+      this.register(phone)
       return
     }
     // 获取用户信息
@@ -45,7 +55,9 @@ Page({
     })
   },
   getuserinfo(e){
+    console.log(e.detail.userInfo)
     if (e.detail.userInfo) {
+      wx.setStorageSync('userInfo', e.detail.userInfo)
       this.setData({
         userInfo: e.detail.userInfo,
         phoneState: true,
@@ -86,38 +98,8 @@ Page({
               pageSize: 10,
             }).then(res => {
               if (res.code = 1) {
-                let data = {
-                  phone: res.response,
-                  userName: this.data.openId,
-                  password: this.data.openId,
-                  sex: this.data.userInfo.gender,
-                  imagePath: this.data.userInfo.avatarUrl,
-                  realName: this.data.userInfo.nickName,
-                  userLevel: 1,
-                  wxOpenId: this.data.openId
-                }
-                api.register(data).then(res => {
-                  if (res.code == 2 || res.code == 1) {
-                    api.bind({
-                      userName: this.data.openId,
-                      password: this.data.openId
-                    }
-                    ).then(res => {
-                      wx.setStorageSync('token', res.response)
-                      wx.setStorageSync('openId', this.data.openId)
-                      th.setData({
-                        phoneState: false
-                      })
-                      wx.switchTab({
-                        url: '../class/class',
-                      })
-                    }).catch(res => {
-
-                    })
-                  }
-                }).catch(res => {
-
-                })
+                wx.setStorageSync('phone', res.response)
+                this.register(res.response)
               }
             }).catch(res => {
 
@@ -127,6 +109,43 @@ Page({
 
         })
       }
+    })
+  },
+  register(phone){
+    let th = this
+    let data = {
+      phone: phone,
+      userName: this.data.openId,
+      password: this.data.openId,
+      sex: this.data.userInfo.gender,
+      imagePath: this.data.userInfo.avatarUrl,
+      realName: this.data.userInfo.nickName,
+      userLevel: 1,
+      wxOpenId: this.data.openId
+    }
+    api.register(data).then(res => {
+      if (res.code == 2 || res.code == 1) {
+        api.bind({
+          userName: this.data.openId,
+          password: this.data.openId
+        }
+        ).then(res => {
+          if(res.code == 1){
+            wx.setStorageSync('token', res.response)
+            wx.setStorageSync('openId', th.data.openId)
+            th.setData({
+              phoneState: false
+            })
+            wx.switchTab({
+              url: '../class/class',
+            })
+          }
+        }).catch(res => {
+
+        })
+      }
+    }).catch(res => {
+
     })
   }
 })
